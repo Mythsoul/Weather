@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: rgb(255, 255, 255);
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    --text-color: rgb(0, 0, 0);
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3px;
+    border-radius: 5px;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+.problem {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    margin: 0;
+    max-width: 300px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-text {
+    font-size: 50px;
+    color : Green;  
+}
