@@ -1,48 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector(".search-form");
-  const information = document.querySelector(".weather-info");
-  const temperatureElement = document.querySelector(".temperature");
-  const conditionElement = document.querySelector(".condition");
-  const humidityElement = document.querySelector(".humidity");
-  const windSpeedElement = document.querySelector(".wind-speed");
-  const city= document.querySelector(".city-name");
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const searchInput = document.querySelector(".Search").value;
-    const apiKey = "nope";
-
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`
-      );
-
-      if (!response.ok) {
-        throw new Error("City not found");
+    const form = document.querySelector(".search-form");
+    const information = document.querySelector(".weather-info");
+    const temperatureElement = document.querySelector(".temperature");
+    const conditionElement = document.querySelector(".condition");
+    const humidityElement = document.querySelector(".humidity");
+    const windSpeedElement = document.querySelector(".wind-speed");
+    const city = document.querySelector(".city-name");
+  
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const searchInput = document.querySelector(".Search").value;
+      const apiKey = "1c7a8384f7b1bd29fdaae24cf6156eac";
+  
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`
+        );
+  
+        if (!response.ok) {
+          throw new Error("City not found");
+        }
+  
+        const data = await response.json();
+        console.log(data);
+        displayWeather(data);
+      } catch (error) {
+        console.log(error);
+        alert(error.message); // Show an alert for better user experience
       }
+    });
+  
+    function displayWeather(data) {
+      const cityName = data.name;
+      const temperature = data.main.temp;
+      const weatherDescription = "rain";
+  
+      // Clear previous weather information
+      city.textContent = `${cityName}`;
+      temperatureElement.textContent = `${temperature}°C`;
+      conditionElement.textContent = `${weatherDescription}`;
+      humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
+      windSpeedElement.textContent = `Wind Speed: ${data.wind.speed} m/s`;
+      information.style.display = "block";
+      console.log(`${cityName} - ${temperature}°C - ${weatherDescription}`);
 
-      const data = await response.json();
-      console.log(data);
-      displayWeather(data);
-    } catch (error) {
-      console.log(error);
+      const image = weatherDescription; 
+      document.body.style.backgroundImage = `url(images/${image}.png)`;
     }
-  });
-
-  function displayWeather(data) {
-    const cityName = data.name;
-    const temperature = data.main.temp;
-    const weatherDescription = data.weather[0].description;
-
-    city.textContent = `${data.name}`;
-    temperatureElement.textContent = `${temperature}°C`;
-    conditionElement.textContent = `${weatherDescription}`;
-    humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
-    windSpeedElement.textContent = `Wind Speed: ${data.wind.speed} m/s`;
-    information.style.display = "block";
-    console.log(cityName + temperature + weatherDescription);
   }
-});
 
-
+  ); 

@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script src="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"></script>
-    
-</head>
-<body>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+  </head>
+  <body>
     <div class="container">
-        <div class="card">
-            <h1 class="card-title">Weather App</h1>
-            <form id="weather-form" class="search-form">
-                <input type="text" id="Search" name="Search" class="Search" placeholder="Enter city name" required>
-                <button type="submit">Search</button>
-            </form>
-            <div id="weather-info" class="weather-info">
-                <div class="city-name">Germany</div>
-                <div class="temperature">72°F</div>
-                <div class="condition">Partly Cloudy</div>
-                <div class="humidity">Humidity: 60%</div>
-                <div class="wind-speed">Wind: 5 mph</div>
-            </div>
+      <div class="card">
+        <h1 class="card-title">Weather App</h1>
+        <form id="weather-form" class="search-form">
+          <input
+            type="text"
+            id="Search"
+            name="Search"
+            class="Search width: 50"
+            placeholder="Enter city name"
+            required
+          />
+          <button type="submit" class="btn">Search</button>
+        </form>
+        <div id="weather-info" class="weather-info">
+          <div class="city-name">Germany</div>
+          <div class="temperature">72°F</div>
+          <div class="condition">Partly Cloudy</div>
+          <div class="humidity">Humidity: 60%</div>
+          <div class="wind-speed">Wind: 5 mph</div>
         </div>
+        <div class="weather-image">
+          <img
+            src="https://openweathermap.org/img/wn/01d@2x.png"
+            id="weather-image"
+            class="weather-image box shadow"
+            alt="Weather Image"
+           hidden />
+        </div>
+      </div>
     </div>
 
     <script src="js/weather.js"></script>
-</body>
+  </body>
 </html>

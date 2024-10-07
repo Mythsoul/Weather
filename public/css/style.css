@@ -10,6 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-size: contain;
 }
 
 .container {
@@ -77,3 +78,5 @@ body {
 .humidity, .wind-speed {
     font-size: 1.2em;
 }
+
+
