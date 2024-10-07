@@ -18,19 +18,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/weather', async (req, res) => {   
-    console.log("req",req.body);
     const city = req.query.Search;
     const apiKey = process.env.API_KEY;
-    if(!apiKey){
-        console.log("Please set API_KEY environment variable");
-        return res.status(500).send({error: "Please set API_KEY environment variable"});
-    }
-    const url =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}` ; 
+    const url =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
     try {   
         const response = await axios.get(url);
         const data = response.data;
-    console.log(data);
-res.send(data); }
+      res.json(data); 
+ }
         catch(e){ 
             console.log(e);
         }
