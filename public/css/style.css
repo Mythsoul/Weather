@@ -77,3 +77,38 @@
     font-size: 50px;
     color : Green;  
 }
+
+.weather-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.weather-image img {
+    width: 200px;
+    height: 200px;
+    border: 3px;
+    border-radius: 5px; 
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    background-color: var(--background-color);
+background-size:cover;
+}
+
+.search-btn {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.search-btn img {
+    width: 30px;
+    height: 30px;
+
+}

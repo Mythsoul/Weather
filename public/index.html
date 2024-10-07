@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>weathers</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/weather.js"></script>
-</head>
-<body>
-           <div class="top">
-            <div class="icon">icon</div>
-            <div class="search-bar">
-                <form action="/weather" method="get" class="search-form">
-                <input type="text" name="Search" id="Search" class = "Search" placeholder="Search the place You like ">
-                <button type="submit">Search</button>
-            </form> 
-            </div>
-            <div class="problem"><button type="menu">
-                PROBLEM 
-            </button></div>
-           </div>
-           <div class="main">
-            <p class="main-text"> 
-                Enter the city  name  
-            </p>
-
-           </div>
-</body>
+  </head>
+  <body>
+    <div class="top">
+      <div class="icon">icon</div>
+      <div class="search-bar">
+        <form class="search-form">
+          <input
+            type="text"
+            name="Search"
+            id="Search"
+            class="Search"
+            placeholder="Search the place You like "
+            required
+          />
+          <button type="submit" class="search-btn">
+            <img src="images/search.png" alt="" />
+          </button>
+        </form>
+      </div>
+      <div class="problem"><button type="menu">PROBLEM</button></div>
+    </div>
+    <div class="main">
+      <p class="main-text">Enter the city name</p>
+      <div class="weather-image">
+        <img src="images/wind.png" alt="weather image" class="image-1" />
+      </div>
+    </div>
+  </body>
 </html>
