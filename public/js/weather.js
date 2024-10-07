@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault(); 
   
       const searchInput = document.querySelector(".Search").value;
-      const apiKey = "1c7a8384f7b1bd29fdaae24cf6156eac";
+      const apiKey = "i aint sharing this ";
       
       try {
         const response = await fetch(
