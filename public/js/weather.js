@@ -8,13 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const city = document.querySelector(".city-name");
     const searchInput = document.querySelector(".Search");
     const suggestionsContainer = document.querySelector(".suggestions");
-    const weatherimage = document.querySelector(".weather-image");
+    const weatherimage = document.querySelector(".weather-image img");
 
-    // Fetch the cities from the JSON file
     fetch("cities.json")
         .then((response) => response.json())
         .then((data) => {
-            cities = data.cities; // Assign the cities from the JSON to the array
+            cities = data.cities;
         })
         .catch((error) => {
             console.error("Error fetching cities:", error);
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         const searchInputValue = searchInput.value.trim();
-        const apiKey = "nope";
+        const apiKey = "1c7a8384f7b1bd29fdaae24cf6156eac";
 
         try {
             const response = await fetch(
@@ -36,10 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             displayWeather(data);
-            checkweather(data.weather[0].description);
         } catch (error) {
             console.log(error);
-            alert(error.message); // Show an alert for better user experience
+            alert(error.message);
         }
     });
 
@@ -48,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const temperature = data.main.temp;
         const weatherDescription = data.weather[0].description;
 
-        // Clear previous weather information
         city.textContent = `${cityName}`;
         temperatureElement.textContent = `${temperature}°C`;
         conditionElement.textContent = `${weatherDescription}`;
@@ -56,11 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
         windSpeedElement.textContent = `Wind Speed: ${data.wind.speed} m/s`;
         information.style.display = "block";
         document.querySelector(".sample").style.display = "none";
+        checkweather(weatherDescription);
     }
 
     searchInput.addEventListener("input", function () {
         const query = searchInput.value.toLowerCase();
-        suggestionsContainer.innerHTML = ""; 
+        suggestionsContainer.innerHTML = "";
 
         if (query) {
             const filteredCities = cities.filter((city) =>
@@ -69,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             displaySuggestions(filteredCities);
         } else {
-            suggestionsContainer.style.display = "none"; 
+            suggestionsContainer.style.display = "none";
         }
     });
 
@@ -82,27 +80,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     suggestionsContainer.addEventListener("click", function (e) {
         if (e.target.classList.contains("suggestion-item")) {
-            searchInput.value = e.target.textContent; // Set input to selected suggestion
-            suggestionsContainer.style.display = "none"; // Hide suggestions
-            form.dispatchEvent(new Event('submit')); // Trigger the form submission
+            searchInput.value = e.target.textContent;
+            suggestionsContainer.style.display = "none";
+            form.dispatchEvent(new Event('submit'));
         }
     });
-{
 
-    function checkweather() {
-        const city = "rai"
-        setTimeout(function () {
-            if (city.includes("snow")) {
-                document.querySelector(".weather-image").src = "images/snow.png";
-            } else if (city.includes("rain")) {
-                document.querySelector(".weather-image").src = "images/rain.png";
-            } else if (city.includes("clear")) {
-                document.querySelector(".weather-image").src = "images/clear.png";
-            } else if (city.includes("clouds")) {
-                document.querySelector(".weather-image").src = "images/clouds.png";
+    function checkweather(weather) {
+        const weatherImages = {
+            rain: "images/rain.png",
+            snow: "images/snow.png",
+            clear: "images/clear.png",
+            clouds: "images/clouds.png",
+        };
+
+        let imageSrc = "";
+
+        for (const condition in weatherImages) {
+            if (weather.includes(condition)) {
+                imageSrc = condition;
+                break;
             }
+        }
 
-        }, 3000);
+        if (imageSrc) {
+            weatherimage.src = weatherImages[imageSrc];
+            weatherimage.alt = imageSrc;
+        }
     }
-}
 });
