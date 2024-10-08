@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         const searchInputValue = searchInput.value.trim();
-        const apiKey = "1c7a8384f7b1bd29fdaae24cf6156eac";
+        const apiKey = "no";
 
         try {
             const response = await fetch(
