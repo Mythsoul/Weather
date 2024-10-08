@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const city = document.querySelector(".city-name");
     const searchInput = document.querySelector(".Search");
     const suggestionsContainer = document.querySelector(".suggestions");
-    
-  
+    const weatherimage = document.querySelector(".weather-image");
 
     // Fetch the cities from the JSON file
     fetch("cities.json")
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         const searchInputValue = searchInput.value.trim();
-        const apiKey = "1c7a8384f7b1bd29fdaae24cf6156eac";
+        const apiKey = "nope";
 
         try {
             const response = await fetch(
@@ -37,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             displayWeather(data);
+            checkweather(data.weather[0].description);
         } catch (error) {
             console.log(error);
             alert(error.message); // Show an alert for better user experience
@@ -55,14 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
         humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
         windSpeedElement.textContent = `Wind Speed: ${data.wind.speed} m/s`;
         information.style.display = "block";
-
-        // Set background image based on weather description
-        document.body.style.backgroundImage = `url(images/${weatherDescription}.png)`;
+        document.querySelector(".sample").style.display = "none";
     }
 
     searchInput.addEventListener("input", function () {
         const query = searchInput.value.toLowerCase();
-        suggestionsContainer.innerHTML = ""; // Clear previous suggestions
+        suggestionsContainer.innerHTML = ""; 
 
         if (query) {
             const filteredCities = cities.filter((city) =>
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             displaySuggestions(filteredCities);
         } else {
-            suggestionsContainer.style.display = "none"; // Hide suggestions if input is empty
+            suggestionsContainer.style.display = "none"; 
         }
     });
 
@@ -89,4 +87,22 @@ document.addEventListener("DOMContentLoaded", function () {
             form.dispatchEvent(new Event('submit')); // Trigger the form submission
         }
     });
+{
+
+    function checkweather() {
+        const city = "rai"
+        setTimeout(function () {
+            if (city.includes("snow")) {
+                document.querySelector(".weather-image").src = "images/snow.png";
+            } else if (city.includes("rain")) {
+                document.querySelector(".weather-image").src = "images/rain.png";
+            } else if (city.includes("clear")) {
+                document.querySelector(".weather-image").src = "images/clear.png";
+            } else if (city.includes("clouds")) {
+                document.querySelector(".weather-image").src = "images/clouds.png";
+            }
+
+        }, 3000);
+    }
+}
 });

@@ -97,3 +97,7 @@ body {
 .suggestion-item:hover {
     background-color: #f0f0f0;
 }
+
+.sample{ 
+    color: red;
+}
