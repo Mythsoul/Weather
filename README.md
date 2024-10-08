@@ -63,5 +63,5 @@ Contributions are welcome! Fork the project, create a feature branch, and submit
 
 # Sample image 
 
-<img src = "web-image.png" style = "height : 500px; width:500px;">
+<img src = "web-image.png" >
 
