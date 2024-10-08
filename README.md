@@ -60,3 +60,8 @@ Contributions are welcome! Fork the project, create a feature branch, and submit
 - [Tailwind CSS](https://tailwindcss.com/) for responsive design.
 
 ---
+
+# Sample image 
+
+<img src = "web-image.png" style = "height : 500px; width:500px;">
+
